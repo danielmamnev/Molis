@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Molis.MainPage">
+
+
+    <NavigationPage.TitleView>
+        <Grid>
+        <Label HorizontalOptions="Center" TextColor="White" FontSize="Large" Text="Molis" FontFamily="BrandBold" VerticalOptions="Center"/>
+        
+
+        <Button Text="+" FontSize="Large" FontFamily="BrandBold" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="EndAndExpand" Clicked="OnItemAdded" />
+            
+            </Grid>
+        </NavigationPage.TitleView>
+    <StackLayout>
+  <Grid BackgroundColor="Black" Padding="5">
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+
+      </Grid.ColumnDefinitions>
+      <Label Grid.Row="0" Grid.Column="0" Text="Prayer" FontFamily="BrandSemiBold" TextColor="White" Margin="5" Padding="5"/>
+      <Label Grid.Row="0" Grid.Column="1" Text="Last Checked" Margin="5" Padding="5" FontFamily="BrandSemiBold" TextColor="White" />
+  </Grid>
+<ListView x:Name="PrayerList" ItemSelected="OnListItemSelected">
+<ListView.ItemTemplate>
+<DataTemplate>
+    <ViewCell>
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+    <Label Grid.Column="0" Grid.Row="0" Text="{Binding Name}" LineBreakMode="WordWrap" FontFamily="BrandMedium"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="10,0,0,0" MaxLines="1"/>
+            <Frame
+                Grid.Column="1"
+                Grid.Row="0"
+                BackgroundColor="{Binding ColorCategory}"
+                HorizontalOptions="End"
+                CornerRadius="100"
+                Padding="01" HasShadow="True"
+                VerticalOptions="CenterAndExpand">
+            <Label Text="-" TextColor="{Binding ColorCategory}" Padding="1" />
+                </Frame>
+    <Label Grid.Column="2" Grid.Row="0" Text="{Binding LastChecked}" TextColor="Black" FontFamily="BrandLight" VerticalOptions="CenterAndExpand" HorizontalOptions="End" Margin="0,0,10,0"/>
+
+            </Grid>
+        </ViewCell>
+</DataTemplate>
+</ListView.ItemTemplate>
+</ListView>
+    </StackLayout>
+
+</ContentPage>
